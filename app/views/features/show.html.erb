@@ -1,0 +1,47 @@
+<%= link_to 'Back', plan_path(@feature.plan), class: "btn btn-outline-secondary" %>
+
+
+<div class="card">
+    <div class="card-header pt-5">
+        <h2 class="card-title d-flex justify-content-between">
+    
+        <span><h5><%= @feature.name %></h5></span>
+        <span>$<%= @feature.unit_price %>/unit</span>      
+        </h2>
+    </div>
+    
+
+    <div class="card-body">
+            <div class="plan">
+                <div>
+                <b>Code:</b>
+                <%= @feature.code %><br>
+                <b>Maximum Unit Limit:</b>
+                <%= @feature.max_unit_limit %>
+                
+                </div>
+                <div>
+                <% if current_user.role == 'admin' %>
+                    <%= link_to 'Edit', edit_feature_path, class: 'btn btn-warning btn-sm' %>
+                    <%= link_to 'Delete', feature_path, method: :delete, class: 'btn btn-danger btn-sm'%>
+                    
+                <% end %>
+
+                <% if current_user.role == 'buyer' %>
+                    <% if current_user.subscriptions.joins(:usages).any? %>
+                        <%= link_to 'Check Usage', usage_path(@usage), class: 'btn btn-primary' %>                    
+                    <% end %>
+                <% end %>
+                </div>
+            </div>
+            
+            
+            <hr>
+        
+        
+    </div>    
+</div>
+
+
+
+

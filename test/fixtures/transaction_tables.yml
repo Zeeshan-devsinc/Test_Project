@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscription_charges: 1
+  Overuse_charges: 1
+  month: 1
+  subscription: one
+  feature: one
+
+two:
+  subscription_charges: 1
+  Overuse_charges: 1
+  month: 1
+  subscription: two
+  feature: two

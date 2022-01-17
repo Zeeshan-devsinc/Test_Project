@@ -1,0 +1,35 @@
+body {
+    background-color: #eeeeee;
+}
+
+.bar{
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.name{
+    color: white;
+    margin-bottom: 0px;
+    padding-right: 15px;
+}
+
+.plan{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.signOut{
+    display: flex;
+    flex-direction: row;
+}
+
+.btns{
+    height: fit-content;
+    width: fit-content;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+

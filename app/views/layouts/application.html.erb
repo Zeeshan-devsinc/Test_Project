@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark align-items justify-content-between ">
+        <span><%= link_to 'Test Project', root_path, class: 'navbar-brand' %> </span>
+        <span class="signOut">
+            <ul class="navbar-nav bar">
+              <li class="nav-item active">
+                
+                <p  class= "name"><%= current_user&.name %></p>
+              </li>
+            </ul>
+            
+            <% if current_user.present? %>
+                  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-primary'%>
+            <% end %>
+        </span>    
+        
+            
+    </nav>
+
+    
+
+    <div class="container pt-5">
+     
+     <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+        
+      
+      <%= yield %>
+    
+    </div>
+  </body>
+</html>
