@@ -7,4 +7,6 @@ class UsersController < ApplicationController
 
     redirect_to root_url, notice: 'User deleted.' if @user.destroy
   end
+
+  def admin?; end
 end

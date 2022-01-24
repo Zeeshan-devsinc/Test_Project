@@ -3,17 +3,20 @@
 class PlansController < ApplicationController
   before_action :authenticate_user!
   before_action :set_plan, only: %i[show edit update destroy]
+  before_action :authorize, only: %i[edit update]
 
   def index
     role = current_user.role
-    if @plans = role == 'buyer' ? Plan.joins(:features).distinct : Plan.all
-    end
-    @users = User.where("role == 'buyer' ")
+    @plans = if role == 'buyer'
+               Plan.joins(:features).distinct
+             else
+               Plan.all
+             end
+    @users = User.user_role
   end
 
   def create
     @plan = Plan.new(plan_params)
-    authorize @plan
     if @plan.save
       redirect_to @plan
     else
@@ -32,7 +35,6 @@ class PlansController < ApplicationController
   end
 
   def update
-    authorize @plan
     if @plan.update(plan_params)
       redirect_to @plan
     else
@@ -54,5 +56,9 @@ class PlansController < ApplicationController
 
   def set_plan
     @plan = Plan.find(params[:id])
+  end
+
+  def authorize_plan
+    authorize @plan
   end
 end

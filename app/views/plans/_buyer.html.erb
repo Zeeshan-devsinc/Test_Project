@@ -1,32 +1,25 @@
 <div class="card">
-    <div class="card-header">
-        <h2 class="card-title d-flex justify-content-between">
-        <span>Plans</span>
-        <%= link_to 'See Your Subscriptions',  user_subscriptions_path(current_user), class: 'btn btn-primary'%>
-
-        </h2>
-    </div>
-    
-    <div class="card-body">
-        <div>
-            <% @plans.each do |plan| %>
-                <div class="plan">
-                    <div>
-                    <h5><%= plan.name %></h5>
-                    $<%= plan.monthly_fee %>
-                    </div>
-                    
-                    <div>    
-                    <%= link_to 'Subscribe', user_subscriptions_path(current_user, subscription: {plan_id: plan.id}), method: :create, class: 'btn btn-success'%>
-                    <%= link_to 'Show', plan_path(plan), class: 'btn btn-primary btn-sm' %>
-                                            
-                                    
-                    </div>
-                </div>                   
-                <hr>
-
-            <% end %>
+  <div class="card-header">
+    <h2 class="card-title d-flex justify-content-between">
+      <span>Plans</span>
+      <%= link_to 'See Your Subscriptions',  user_subscriptions_path(current_user), class: 'btn btn-primary'%>
+    </h2>
+  </div>
+  <div class="card-body">
+    <div>
+      <% @plans.each do |plan| %>
+        <div class="plan">
+          <div>
+            <h5><%= plan.name %></h5>
+            $<%= plan.monthly_fee %>
+          </div>
+          <div>
+            <%= link_to 'Subscribe', user_subscriptions_path(current_user, subscription: {plan_id: plan.id}), method: :create, class: 'btn btn-success'%>
+            <%= link_to 'Show', plan_path(plan), class: 'btn btn-primary btn-sm' %>
+          </div>
         </div>
-
-    </div> 
+        <hr>
+      <% end %>
+    </div>
+  </div>
 </div>

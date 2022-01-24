@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  
   resources :users, shallow: true do
     resources :subscriptions do
       resources :transaction_tables

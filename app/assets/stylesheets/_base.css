@@ -2,29 +2,29 @@ body {
     background-color: #eeeeee;
 }
 
-.bar{
+.bar {
     align-items: center;
     margin-top: 0.5rem;
 }
 
-.name{
+.name {
     color: white;
     margin-bottom: 0px;
     padding-right: 15px;
 }
 
-.plan{
+.plan {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
 }
 
-.signOut{
+.signOut {
     display: flex;
     flex-direction: row;
 }
 
-.btns{
+.btns {
     height: fit-content;
     width: fit-content;
     justify-content: space-between;

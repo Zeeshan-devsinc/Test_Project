@@ -10,9 +10,8 @@ class FeaturesController < ApplicationController
   end
 
   def show
-    # @subscription = Subscription.find(params[:id])
     @usage = Usage.joins(subscription: :user)
-                  .where(user: { id: current_user.id }, feature_id: @feature.id).first
+                  .where(users: { id: current_user.id }, feature_id: @feature.id).first
   end
 
   def new
@@ -53,11 +52,10 @@ class FeaturesController < ApplicationController
   end
 
   def set_feature
-    @feature = Feature.find(params[:id])
+    @feature = Feature.find_by(params[:id])
   end
 
   def feature_params
     params.require(:feature).permit(:subscription_id, :name, :code, :unit_price, :max_unit_limit)
-    # params.require(:feature)
   end
 end

@@ -3,11 +3,12 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_subscription, only: %i[edit update destroy]
+  before_action
 
   def index
-    @subscriptions = current_user.subscriptions if current_user.role == 'buyer'
+    @subscriptions = current_user.subscriptions if current_user.buyer?
 
-    if current_user.role == 'admin'
+    if current_user.admin?
       @user = User.find(params[:user_id])
       @subscriptions = @user.subscriptions
     end
@@ -44,7 +45,7 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     @subscription = current_user.subscriptions.find(params[:id])
-    @subscription.destroy
+    @subscription.deleted
     redirect_to user_subscriptions_path(current_user.subscriptions),
                 notice: "Subscription #{@subscription.id} Cancelled"
   end
