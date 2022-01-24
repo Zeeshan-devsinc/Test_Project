@@ -1,0 +1,37 @@
+<% User.all.each do |user| %>
+  <%= user.email %>
+  <%= user.role %><br>
+<% end %>
+<% current_user.subscriptions.each do |subscription| %>
+  <% subscription.id %>
+  <% current_user.name %>
+<% end %>
+<%= link_to 'Subscribe', user_subscriptions_path(current_user, subscription: {plan_id: plan.id}), method: :create, class: 'btn btn-success'%>
+<div class="card">
+  <div class="card-body">
+  </div>
+</div>
+<div>
+  <% @plans.each do |plan| %>
+    <div>
+      <%= plan.name %>
+      <%= plan.monthly_fee %>
+      <%= link_to 'Add Features', new_plan_feature_path(plan), class: 'btn btn-info' %>
+      <%= link_to 'Delete', plan_path(plan), method: :delete, class: 'btn btn-danger'%>
+      <%= link_to 'Edit', edit_plan_path(plan), class: 'btn btn-warning' %>
+      <br/>
+      <% plan.features.each do |feature| %>
+        <%= feature.name %>
+        <%= feature.code %>
+        <%= feature.max_unit_limit %>
+        <%= feature.unit_price %><br />
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+</div>
+<%= @subscription.plan.name %>
+<%= @subscription.user.email %>
+<br />
+<%= link_to 'Your Subscriptions', user_subscriptions_path(current_user) %>
+<br />

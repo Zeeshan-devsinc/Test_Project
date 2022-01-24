@@ -1,0 +1,15 @@
+<%= link_to 'Back', feature_path(@usage.feature), class: "btn btn-outline-secondary" %>
+<div class="card">
+  <div class="card-header pt-5">
+    <h2 class="card-title d-flex justify-content-between">
+      <span>
+        <h5> <%= @usage.feature[:name] %></h5>
+      </span>
+      <b>Units Used:
+        <% if @usage.units_used.nil? %>
+          0
+        <% else %>
+          <%= @usage.units_used %></b>
+      <% end %>
+    </h2>
+  </div>

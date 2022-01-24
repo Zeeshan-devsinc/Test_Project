@@ -1,0 +1,9 @@
+<h1>Features of <%= @plan.name %></h1>
+<% @plan.features.each do |feature| %>
+  <%= feature.name %>
+  <%# <%= link_to 'Check Usage', feature_usages_path(feature_id), class: 'btn btn-primary' %> %>
+  <%= feature.code %>
+  <%= feature.max_unit_limit %>
+  <%= feature.unit_price %>
+<% end %>
+<%= link_to 'Back', plans_path %>

@@ -1,0 +1,26 @@
+<%= link_to 'Back', plans_path, class: "btn btn-outline-secondary" %>
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title d-flex justify-content-between">
+      <span> Subscriptions</span>
+      <b>Billing Day: <%= current_user.billing_day %></b>
+    </h2>
+  </div>
+  <div class="card-body">
+    <div>
+      <% @subscriptions.each do |sub| %>
+        <div class="plan">
+          <div>
+            <h5><%= sub.plan.name %></h5>
+            $<%= sub.plan.monthly_fee %>
+          </div>
+          <div class="btns">
+            <%= link_to 'Show', plan_path(sub.plan, {plan: {subscription_id: sub.id}}), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Cancel Subscription', subscription_path(sub), method: :delete, class: 'btn btn-danger btn-sm' %><br />
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>

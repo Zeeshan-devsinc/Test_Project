@@ -1,0 +1,30 @@
+<div class="alert alert-success" role="alert">
+  Plan Successfully Subscribed
+</div>
+<%= link_to 'Back', plans_path, class: "btn btn-outline-secondary" %>
+<div class="card">
+  <div class="card-header pt-5">
+    <h2 class="card-title d-flex justify-content-between">
+      <span><%= @subscription.plan.name %></span>
+      <span>$<%= @subscription.plan.monthly_fee%></span>
+    </h2>
+  </div>
+  <div class="card-body">
+    <% @subscription.plan.features.each do |feature| %>
+      <div class="plan">
+        <div>
+          <h5><%= feature.name %></h5>
+          $<%= feature.unit_price %>/unit
+        </div>
+        <div>
+          <%= link_to 'Show', feature_path(feature), class: 'btn btn-secondary btn-sm' %>
+          <% if current_user.role == 'admin' %>
+            <%= link_to 'Edit', edit_feature_path(feature), class: 'btn btn-warning btn-sm' %>
+            <%= link_to 'Delete', feature_path(feature), method: :delete, class: 'btn btn-danger btn-sm'%>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>
